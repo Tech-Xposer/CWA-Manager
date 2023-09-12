@@ -4,6 +4,7 @@ const mailCred = require('../config/config')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+
 const loadRegister = (req, res) => {
     try {
         res.render('register');
@@ -97,7 +98,43 @@ const userVerification = async(req,res)=>{
     }
 }
 
+const userLogin = async(req,res)=>{
+    res.render('login')
+}
+
+const validateLogin = async(req,res)=>{
+    try {
+        const userData = await User.findOne({email:req.body.email})
+        console.log('userData:->  '+userData);
+        if(userData ){
+            const passCheck = await bcrypt.compare(req.body.password, userData.password)
+            if(passCheck){
+                if(userData.is_verified === 1){
+                    req.session.user_id = userData._id
+                    res.redirect('/home')         
+                }else{
+                    res.render('login',{message:'Please Verify Your Mail! '})         
+                }
+            }else{
+                res.render('login',{message:'Incorrect Credentials.. Please Try Again! '})
+            }
+        }else{
+            res.render('login',{message:'Incorrect Credentials.. Please Try Again! '})
+        }
+    } catch (error) {
+        
+    }
+}
+
+const loadDashboard = async (req,res)=>{
+    try {
+        res.render('home')
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 const pageNotFound = (req,res)=>{
     res.render('404')
 }
-module.exports = { loadRegister, getuserDetails ,userVerification,pageNotFound};
+module.exports = { loadRegister, getuserDetails ,userVerification,pageNotFound,userLogin,validateLogin,loadDashboard};

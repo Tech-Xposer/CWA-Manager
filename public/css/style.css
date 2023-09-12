@@ -4,6 +4,15 @@
           box-sizing: border-box;
 }
 
+/* Add this CSS to your existing stylesheet or create a new CSS file */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 
 #notfound {
   position: relative;

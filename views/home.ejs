@@ -7,5 +7,23 @@
 </head>
 <body>
     <%- include('common/header') %>
+    <a href="/logout">Logout</a>
+
+    <table border="">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+        <tr>
+            <% for(const data of userData){ %>
+                <td><%= data.name%></td>
+                <td><%= data.email%></td>
+                <td><%= data.mobile%></td>
+            <%}%>
+        </tr>
+    
+    </table>
+
 </body>
 </html>

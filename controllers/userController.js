@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const nodemailer = require("nodemailer");
 const mailCred = require('../config/config')
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 const saltRounds = 10;
 
 
@@ -14,15 +15,19 @@ const loadRegister = (req, res) => {
 };
 const getuserDetails = async (req, res) => {
     try {
-        const existingUser = await User.findOne({ email: req.body.email });
+        const name= req.body.name
+        const email= req.body.email
+        const mobile= req.body.mobile
+        const password= req.body.password
+        const existingUser = await User.findOne({ email: email });
         if (existingUser) {
             res.render('register', { message: 'User already exists with this email' });
         } else {
-            const hashPass = await hashPassword(req.body.pass);
+            const hashPass = await hashPassword(password);
             const user = new User({
-                name: req.body.name,
-                email: req.body.email,
-                mobile: req.body.mobile,
+                name: name,
+                email: email,
+                mobile: mobile,
                 password: hashPass,
                 is_admin: 0
             });
@@ -31,7 +36,7 @@ const getuserDetails = async (req, res) => {
 
             if (result) {
                 verifyEmail(req.body.email,req.body.name,result._id)
-                res.render('register', { message: 'Registered Successfully. Please verify your email' });
+                res.render('/', { message: 'Registered Successfully. Please verify your email' });
             } else {
                 res.render('register', { message: 'Registration Unsuccessful' });
             }
@@ -41,9 +46,9 @@ const getuserDetails = async (req, res) => {
     }
 };
 
-const hashPassword = async (password) => {
+const hashPassword = async (pass) => {
     try {
-        const hash_pass = await bcrypt.hash(password, saltRounds);
+        const hash_pass = await bcrypt.hash(pass, saltRounds);
         return hash_pass;
     } catch (error) {
         console.log('Error hashing password: ' + error.message);
@@ -119,7 +124,7 @@ const validateLogin = async(req,res)=>{
                 res.render('login',{message:'Incorrect Credentials.. Please Try Again! '})
             }
         }else{
-            res.render('login',{message:'Incorrect Credentials.. Please Try Again! '})
+            res.render('login',{message:'Account not Found.. Please Register first or Try Again! '})
         }
     } catch (error) {
         
@@ -128,13 +133,23 @@ const validateLogin = async(req,res)=>{
 
 const loadDashboard = async (req,res)=>{
     try {
-        res.render('home')
+        const userData = await User.find()
+        console.log(userData)
+        res.render('home',{userData})
     } catch (error) {
         console.log(error.message);
+    }
+}
+const userLogout = async(req,res)=>{
+    try {
+        req.session.destroy()
+        res.redirect('/')
+    } catch (error) {
+        console.log(error.message)
     }
 }
 
 const pageNotFound = (req,res)=>{
     res.render('404')
 }
-module.exports = { loadRegister, getuserDetails ,userVerification,pageNotFound,userLogin,validateLogin,loadDashboard};
+module.exports = { loadRegister, getuserDetails ,userVerification,pageNotFound,userLogin,validateLogin,loadDashboard, userLogout};

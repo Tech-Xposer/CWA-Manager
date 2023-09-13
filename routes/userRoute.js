@@ -22,6 +22,7 @@ userRoute.get('/',auth.isUserLogout,userController.userLogin)
 userRoute.post('/',userController.validateLogin)
 
 userRoute.get('/verify',userController.userVerification)
+userRoute.get('/logout',auth.isUserLogin,userController.userLogout)
 userRoute.get('/home',auth.isUserLogin,userController.loadDashboard)
 userRoute.get('*',userController.pageNotFound)
 module.exports = userRoute 

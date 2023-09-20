@@ -14,6 +14,7 @@ cwaRoute.get('/about',cwaController.loadAbout)
 cwaRoute.get('/contact',cwaController.loadContact)
 cwaRoute.post('/contact',cwaController.submitMessage)
 
+cwaRoute.get('/resume',cwaController.loadResume)
 
 
 module.exports = cwaRoute

@@ -33,5 +33,12 @@ const submitMessage = async(req,res)=>{
         
     }
 }
+const loadResume = async(req,res)=>{
+    try {
+        res.render('resume')
+    } catch (error) {
+        console.log('Not Found');
+    }
+}
 
-module.exports = {loadHome,loadAbout,loadContact,submitMessage}
+module.exports = {loadHome,loadAbout,loadContact,submitMessage, loadResume}

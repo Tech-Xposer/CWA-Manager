@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CodeWithAsh - About</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="/img/favicon.png" rel="icon">
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="cwa/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="cwa/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="cwa/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="cwa/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="cwa/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="cwa/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  
+  <main id="main">
+    <%- include('../common/header') %>
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About</h2>
+          <p>"Hello, I'm Ashutosh, Node.js Developer hailing from the vibrant town of Yamuna Nagar, Haryana. Join me on a journey where code meets creativity, as we explore the boundless possibilities of web development together."</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="../cwa/img/about.jpeg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <h3>Node Js &amp; Android Developer</h3>
+            <p class="fst-italic">
+              I'm passionate about creating seamless web applications and harnessing the power of technology to solve real-world problems.
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Birthday:</strong> 7 March 2001</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Website:</strong> www.codewithash.blog</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Phone:</strong> +91 9182707573</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>City:</strong>   Yamuna Nagar, Haryana</li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Age:</strong> 22</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Degree:</strong> Master</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Email:</strong> asharma89505@gmail.com</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Freelance:</strong> Available</li>
+                </ul>
+              </div>
+            </div>
+            <p class="justify-content-center" style="text-align: justify;">
+              As a dedicated Software Developer with a Master's degree in Computer Application, I'm driven by a passion for crafting elegant solutions to complex challenges. My diverse expertise in programming languages and development tools fuels my creativity, enabling me to make impactful contributions to collaborative projects, all within the dynamic realm of technology
+              
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>Proficient in a wide range of programming languages, frameworks, and tools, ensuring versatility in tackling diverse development tasks.</p>
+        </div>
+
+        <div class="row skills-content">
+
+          <%for(const skill of skillsArr){%>
+            <div class="col-lg-6">
+
+              <div class="progress">
+                <span class="skill"><%= skill.skillname %><i class="val"><%=skill.percent%>%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<%=skill.percent%>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          <%}%>
+        </div>
+
+      </div>
+    </section><!-- End Skills Section -->
+
+    <!-- ======= Facts Section ======= -->
+    <section id="facts" class="facts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Achievements</h2>
+          <p>Explore my achievements and milestones in the world of development. From launching innovative apps to contributing to open-source projects, discover the impact I've made in the tech industry.</p>
+        </div>
+
+        <div class="row counters">
+
+          <!-- <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Clients</p>
+          </div> -->
+
+          <div class="col-lg-3 col-4 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Projects</p>
+          </div>
+
+          <div class="col-lg-3 col-4 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="250" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hours Of Work</p>
+          </div>
+
+          <!-- <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hard Workers</p>
+          </div> -->
+
+        </div>
+
+      </div>
+    </section><!-- End Facts Section -->
+
+ 
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="cwa/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="cwa/vendor/aos/aos.js"></script>
+  <script src="cwa/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="cwa/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="cwa/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="cwa/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="cwa/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="cwa/vendor/php-email-form/validate.js"></script>
+ 
+  <!-- Template Main JS File -->
+  <script src="cwa/js/main.js"></script>
+ 
+</body>
+
+</html>

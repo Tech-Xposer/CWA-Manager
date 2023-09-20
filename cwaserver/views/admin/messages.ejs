@@ -1,0 +1,77 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Admin - Direct Message</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Include jQuery from a CDN -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+		
+		
+		
+    <style>
+       body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        #content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #19BC9C;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .message {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Change icon color to #19BC9C */
+        .message i {
+            margin-right: 5px;
+            color: #19BC9C;
+        }
+
+        .message p {
+            margin-bottom: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <%if(typeof allMessages !== 'undefined'){%>
+      <!-- Page Content -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+          <h2>All Messages</h2>
+          <%for(msg of allMessages){%>
+              <div class="message">
+                  <p><i class="zmdi zmdi-account"></i> Name: <%=msg.name%></p>
+                  <p><i class="zmdi zmdi-email"></i> Email: <%=msg.email%></p>
+                  <p><i class="zmdi zmdi-info"></i> Subject: <%=msg.subject%></p>
+                  <p><i class="zmdi zmdi-comment-text"></i> Message: <%=msg.message%></p>
+              </div>
+          <%}%>
+      </div>
+    <%}%>
+    
+  </body>
+</html>

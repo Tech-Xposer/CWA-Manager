@@ -88,7 +88,7 @@ const verifyEmail = async (eMail,name,id) => {
             subject: 'User Verification - CodeWithAsh',
             text: 'Please Verify your mail with following link !',
             html: `<h2>Hi, ${name}</h2></br><p>Please click on the following link to verify your email address:</p>
-            <a href="http://localhost:3008/verify?id=${id}">Verify</a>`   
+            <a href="/verify?id=${id}">Verify</a>`   
         },(err,info)=>{
             if(err){
                 console.log(err.message);

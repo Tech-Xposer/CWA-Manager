@@ -1,0 +1,79 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Admin - Direct Message</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://kit.fontawesome.com/7ceed728cf.js"></script>
+
+    <link rel="stylesheet" href="/admin/css/style.css">
+  </head>
+  <body>
+    <div class="main">
+        <div id="menu">
+          <div class="logo">
+              <img src="/images/logo.png" alt="Code With Ash" srcset="">
+          </div>
+          <div id="sidebar">
+            <ul>
+              <li><i class="fa-solid fa-house " ></i></i><a href="home" class="active">Dashboard</a></li>
+              <li><i class="fa-solid fa-message" ></i><a href="messagesbyno">Message</a></li>
+              <!-- <li><i class="fa-solid fa-message"></i><a href="messages">Messages</a></li> -->
+              <li><i class="fa-solid fa-newspaper" ></i><a href="blog">Blogs</a></li>
+              <li><i class="fa-solid fa-user" ></i><a href="">About</a></li>
+              <li><i class="fa-solid fa-gear" ></i><a href="">Settings</a></li>
+              <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <%if(typeof blogData !== 'undefined'){%>
+        <!-- Page Content -->
+        <div id="content" >
+            <h2>All Messages</h2>
+            <button id="addBlogButton">Add Blog</button><br>
+            <hr>
+            <%for(blog of blogData){%>
+                <div class="blog-box">
+                    <a href="deleteMessage/<%=blog._id%>"><i class="fa-solid fa-trash trash-icon"></i></a>
+                    <p><i class="fa-solid fa-user"></i> Title: <%=blog.title%></p>
+                    <p><i class="fa-solid fa-envelope"></i> Author: <%=blog.author%></p>
+                    <i class="fa-solid fa-envelope-open-text"></i> Content:<pre> <%=blog.content.slice(0,500)%> ...</pre>
+                    <p ><i class="fa-solid fa-message"></i> Message: <%=blog.date%></p>
+                </div>
+            <%}%>
+           
+        </div>
+        
+        <%}%>
+        <%if(typeof skip !== 'undefined'){%>
+            <div class="nav">
+                <div class="nav-left">
+                    <% if (skip > 0) { %>
+                        <a href="messagesbyno?skip=<%= skip - 5 %>" class="new">
+                            <i class="fa-solid fa-backward"></i> Newer
+                        </a>
+                    <% } else { %>
+                        <a href="#" class="new" style="pointer-events: none;">
+                            <i class="fa-solid fa-backward"></i> Newer
+                        </a>
+                    <% } %>
+                </div>
+            
+                <div class="nav-right">
+                    <a href="messagesbyno?skip=<%= skip + 5 %>" class="old">Older <i class="fa-solid fa-forward"></i></a>
+                </div>
+            </div>
+            
+        <%}%>
+      </div>
+      <script>
+        const addBlogButton = document.getElementById('addBlogButton');
+        addBlogButton.addEventListener('click', function() {
+            // Redirect to the new URL when the button is clicked
+            window.location.href = 'http://localhost:3008/admin/insertblog';
+        });
+      </script>
+  </body>
+</html>

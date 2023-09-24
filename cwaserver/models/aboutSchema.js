@@ -5,7 +5,7 @@ const aboutSchema = {
         type: String,
         required: true
     },
-    desgination:{
+    designation:{
         type: String,
         required: true
     },
@@ -13,9 +13,21 @@ const aboutSchema = {
         type: Number,
         required: true
     },
+    mobile:{
+        type: String,  
+        required:true 
+    },
     website:{
         type: String,
         required: true
+    },
+    qualification:{
+        type: String,
+        required:true
+    },
+    city:{
+        type: String,
+        required:true
     },
     email:{
         type: String,
@@ -28,5 +40,17 @@ const aboutSchema = {
     para:{
         type: String,
         required: true
+    },
+    birthday:{
+        type: String,
+        requried: true
+    },projects:{
+        type: Number,
+        required:true
+    },
+    hrs_work:{
+        type:Number,
+        required: true
     }
 }
+module.exports = mongoose.model('about',aboutSchema)

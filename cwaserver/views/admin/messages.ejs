@@ -5,73 +5,62 @@
   	<title>Admin - Direct Message</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Include jQuery from a CDN -->
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-		
-		
-		
-    <style>
-       body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-        }
+    <script src="https://kit.fontawesome.com/7ceed728cf.js"></script>
 
-        #content {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #333;
-            border-bottom: 2px solid #19BC9C;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        .message {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            background-color: #fff;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Change icon color to #19BC9C */
-        .message i {
-            margin-right: 5px;
-            color: #19BC9C;
-        }
-
-        .message p {
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="/admin/css/style.css">
   </head>
   <body>
-    <%if(typeof allMessages !== 'undefined'){%>
-      <!-- Page Content -->
-      <div id="content" class="p-4 p-md-5 pt-5">
-          <h2>All Messages</h2>
-          <%for(msg of allMessages){%>
-              <div class="message">
-                  <p><i class="zmdi zmdi-account"></i> Name: <%=msg.name%></p>
-                  <p><i class="zmdi zmdi-email"></i> Email: <%=msg.email%></p>
-                  <p><i class="zmdi zmdi-info"></i> Subject: <%=msg.subject%></p>
-                  <p><i class="zmdi zmdi-comment-text"></i> Message: <%=msg.message%></p>
-              </div>
-          <%}%>
+    <div class="main">
+        <div id="menu">
+          <div class="logo">
+              <img src="/images/logo.png" alt="Code With Ash" srcset="">
+          </div>
+          <div id="sidebar">
+            <ul>
+              <li><i class="fa-solid fa-house " ></i></i><a href="home" class="active">Dashboard</a></li>
+              <li><i class="fa-solid fa-message" ></i><a href="messagesbyno">Message</a></li>
+              <!-- <li><i class="fa-solid fa-message"></i><a href="messages">Messages</a></li> -->
+              <li><i class="fa-solid fa-newspaper" ></i><a href="blog">Blogs</a></li>
+              <li><i class="fa-solid fa-user" ></i><a href="">About</a></li>
+              <li><i class="fa-solid fa-gear" ></i><a href="">Settings</a></li>
+              <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <%if(typeof allMessages !== 'undefined'){%>
+        <!-- Page Content -->
+        <div id="content" >
+            <h2>All Messages</h2>
+            <hr>
+            <%for(msg of allMessages){%>
+                <div class="message">
+                    <a href="deleteMessage/<%=msg._id%>"><i class="fa-solid fa-trash trash-icon"></i></a>
+                    <p><i class="fa-solid fa-user"></i> Name: <%=msg.name%></p>
+                    <p><i class="fa-solid fa-envelope"></i> Email: <%=msg.email%></p>
+                    <p><i class="fa-solid fa-envelope-open-text"></i> Subject: <%=msg.subject%></p>
+                    <pre class="msg"><i class="fa-solid fa-message"></i> Message: <%=msg.message%></pre>
+                </div>
+            <%}%>
+           
+        </div>
+        
+        <%}%>
+        <%if(typeof skip !== 'undefined'){%>
+          <div class="nav">
+            <div class="nav-left">
+              <%if(skip==0){%>
+                <a href="messagesbyno?skip=<%=parseInt(skip)%>" class="new" target="_blank" style="pointer-events: none;"> <i class="fa-solid fa-backward"></i> Newer</a>
+                <%}else{%>
+                <a href="messagesbyno?skip=<%=parseInt(skip)-5%>" class="new" ><i class="fa-solid fa-backward"></i> Newer</a>
+                <%}%>
+            </div>
+            
+            <div class="nav-right">
+              <a href="messagesbyno?skip=<%=parseInt(skip)+5%>" class="old" >Older <i class="fa-solid fa-forward"></i></a>
+            </div>
+          </div>
+        <%}%>
       </div>
-    <%}%>
-    
   </body>
 </html>

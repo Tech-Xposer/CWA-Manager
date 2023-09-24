@@ -1410,7 +1410,9 @@ blockquote {
     }
 }
 
-
+.post-image img{
+    width: 100%;
+}
 
 /* Useful Classes */
 

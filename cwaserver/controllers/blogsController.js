@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 const multer = require('multer')
 const { format } = require('date-fns'); // Import the format function from date-fns
 
-const showBlogs = async (req, res) => {
+const loadBlogs = async (req, res) => {
   try {
     const blogData = await Blogs.find({ }).sort('title');
     if (blogData) {
@@ -56,14 +56,16 @@ const upload = multer({storage:storage})
 const insertBlog = async (req,res)=>{
   try {
     const blog = new Blogs(req.body)
+    blog.permalink = req.body.title.toLowerCase().replaceAll(" ","-")
     blog.image = req.file.filename
     const data = await blog.save()
     if(data){
-      res.send(data)
+      res.redirect('/admin/blog')
     }
   } catch (error) {
     console.log(error);
   }
 }
 
-module.exports = { showBlogs, getBlogbyId ,searchbyTitle,insertBlog,upload };
+
+module.exports = { loadBlogs, getBlogbyId ,searchbyTitle,insertBlog,upload };

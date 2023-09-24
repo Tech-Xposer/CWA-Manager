@@ -5,6 +5,7 @@ const mailCred = require('../config/config')
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const saltRounds = 10;
+const mailer = require('./nodeMailer')
 
 const loadMessage = async (req,res)=>{
     const allMessages = await Contact.find({}).sort('date')
@@ -107,7 +108,7 @@ const userVerification = async(req,res)=>{
         }else{
             const updateInfo = await User.updateOne({_id:req.query.id},{ $set:{is_verified:1}})
             if(updateInfo){
-                res.redirect('/login')
+                res.redirect('/adminLogin')
             }
         }
     } catch (error) {
@@ -117,7 +118,13 @@ const userVerification = async(req,res)=>{
 }
 
 const userLogin = async(req,res)=>{
-    res.render('login')
+    
+    try {
+        res.render('login')
+    } catch (error) {
+        console.error(error.message);
+        res.status(404).render('404',{ message: 'Internal Server Error' });
+    }
 }
 
 const validateLogin = async(req,res)=>{
@@ -130,32 +137,38 @@ const validateLogin = async(req,res)=>{
                 if(userData.is_verified === 1 ){
                     if( userData.is_admin === 1){
                         req.session.user_id = userData._id
-                        res.redirect('/home') 
+                        res.redirect('/admin/home') 
                     }else{
+                        console.log('Sorry! Only Admin Can Login ');
                         res.render('login',{message:'Sorry! Only Admin Can Login '})    
                     }
                 }else{
+                    console.log('Please Verify Your Mail! ');
                     res.render('login',{message:'Please Verify Your Mail! '})         
                 }
             }else{
+                console.log('Incorrect Credentials.. Please Try Again! ');
                 res.render('login',{message:'Incorrect Credentials.. Please Try Again! '})
             }
         }else{
+            console.log('Account not Found.. Please first or Try Again!');
             res.render('login',{message:'Account not Found.. Please Register first or Try Again! '})
         }
     } catch (error) {
-        
+        console.error(error.message);
+        res.status(500).send({ message: 'Internal Server Error' });
     }
 }
 
 const loadDashboard = async (req,res)=>{
     try {
-        const userData = await User.find()
-        res.render('dashboard',{userData})
-    } catch (error) {
-        console.log(error.message);
+        res.render('dashboard')      
+    }catch (error) {
+          console.error(error.message);
+          res.status(500).send({ message: 'Internal Server Error' });
+        }
     }
-}
+    
 const userLogout = async(req,res)=>{
     try {
         req.session.destroy()
@@ -165,20 +178,39 @@ const userLogout = async(req,res)=>{
     }
 }
 
-const deleteUser = async (req,res)=>{
+const deleteMessage = async (req, res) => {
     try {
-        const deleteData = await User.deleteOne({id:req.body.id})
-        if(deleteData){
-            res.redirect('/home')
-        }
+      console.log(req.params._id);
+      const messageId = req.params._id; 
+  
+      const deleteData = await Contact.deleteOne({ _id: messageId });
+  
+      if (deleteData.deletedCount === 1) {
+        res.redirect('/admin/messages')
+      
+      } else {
+        res.status(404).send({ message: 'Message not found' });
+      }
     } catch (error) {
-        console.log(error.message)
+      console.error(error.message);
+      res.status(500).send({ message: 'Internal Server Error' });
     }
-}
+  }
 
 const pagination = async (req,res)=>{
-    const skip = req.query.skip;
-    const data = await User.find({}).skip(skip).limit(10)
+    try {
+        if(req.query.skip){
+            const allMessages = await Contact.find({}).skip(req.query.skip).limit(5)
+            res.render('messages',{allMessages,skip:req.query.skip})
+    
+        }else{
+            const allMessages = await Contact.find({}).skip(0).limit(5)
+            res.render('messages',{allMessages,skip:0})
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send({ message: 'Internal Server Error' });
+    }
 }
 
 const searchUser = async(req,res)=>{
@@ -188,12 +220,31 @@ const searchUser = async(req,res)=>{
         const searchData = await User.find({ name: new RegExp(userName) }, { _id: 0, is_admin: 0 });
         if(searchData){
             res.send({searchData})
+        }else {
+            res.status(404).send({ message: 'Message not found' });
         }
     }catch(err){
-        console.log(err);
+        console.log(err)
+        res.status(500).send({ message: 'Internal Server Error' });
     }
 }
 
+const sendMail = async(req,res)=>{
+    try {
+        mailer.sendMail(req.body.email)
+        res.status(200).send('Sent Successfully')
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
 
-module.exports = {loadMessage, loadRegister, getuserDetails ,userVerification,userLogin,validateLogin,loadDashboard, userLogout,deleteUser,searchUser};
+const loadinsertBlog = async(req,res)=>{
+    try {
+      res.status(200).render('insertblog')
+    } catch (error) {
+      res.status(404).send('Page Not Found')
+    }
+  }
+
+module.exports = {loadMessage, loadRegister, getuserDetails ,userVerification,userLogin,validateLogin,loadDashboard, userLogout,deleteMessage,searchUser,pagination,sendMail,loadinsertBlog};
 

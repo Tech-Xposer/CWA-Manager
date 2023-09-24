@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const session = require('express-session')
 const adminController = require('../controllers/adminController')
+const blogsController = require('../controllers/blogsController')
 const config = require('../config/config')
 const auth = require('../middleware/auth')
 
@@ -14,8 +15,16 @@ adminRoute.use(bodyParser.urlencoded({extended: false}))
 adminRoute.use(session({secret:config.secretKey}))
 
 
-adminRoute.get('/message',auth.isUserLogin, adminController.loadMessage )
-adminRoute.get('/home',auth.isUserLogin,adminController.loadDashboard)
+adminRoute.get('/admin/messages',auth.isUserLogin, adminController.loadMessage )
+adminRoute.get('/admin/messagesbyno',auth.isUserLogin, adminController.pagination )
+adminRoute.get('/admin/home',auth.isUserLogin,adminController.loadDashboard)
+adminRoute.post('/admin/sendmail',auth.isUserLogin,adminController.sendMail)
+adminRoute.get('/admin/insertblog',auth.isUserLogin,adminController.loadinsertBlog)
+adminRoute.post('/admin/insertblog',auth.isUserLogin,blogsController.insertBlog)
+
+adminRoute.get('/admin/blog',auth.isUserLogin,blogsController.loadBlogs)
+
+
 
 
 adminRoute.get('/register', auth.isUserLogout, adminController.loadRegister)
@@ -25,10 +34,10 @@ adminRoute.get('/adminLogin',auth.isUserLogout,adminController.userLogin)
 adminRoute.post('/adminLogin',adminController.validateLogin)
 
 adminRoute.get('/verify',adminController.userVerification)
-adminRoute.get('/deleteUser',adminController.deleteUser)
-adminRoute.get('/logout',auth.isUserLogin,adminController.userLogout)
+adminRoute.get('/admin/deleteMessage/:_id',adminController.deleteMessage)
+adminRoute.get('/admin/logout',auth.isUserLogin,adminController.userLogout)
 
 
-adminRoute.post('/search',adminController.searchUser )
+adminRoute.post('admin/search',adminController.searchUser )
 
 module.exports = adminRoute

@@ -1,5 +1,6 @@
 const Contact = require('../models/contactModel')
 const Skill = require('../models/skillSchema')
+const About = require('../models/aboutSchema')
 
 const loadHome =  async (req,res)=>{
     res.render('home')
@@ -8,8 +9,9 @@ const loadHome =  async (req,res)=>{
 const loadAbout =  async (req,res)=>{
     try {
         const skillsArr = await Skill.find({}).sort({percent:1})
-        if(skillsArr){
-            res.render('about',{skillsArr})
+        const about = await About.findOne({})
+        if(skillsArr && about){
+            res.render('about',{skillsArr, about})
         }
     } catch (error) {
         console.log(error);

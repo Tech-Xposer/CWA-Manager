@@ -1,23 +1,73 @@
-
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert Blog</title>
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <title>Create New Blog</title>
+    <script src="https://kit.fontawesome.com/7ceed728cf.js"></script>
+
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <form action="/insertblog" method="post" enctype="multipart/form-data" >
-        <input type="text" name="title" id="" placeholder="Title"> <br>
-        
-        <textarea name="content" id="" cols="30" rows="10" placeholder="Content"></textarea><br>
-        <input type="text" name="author" id="" placeholder="Author"><br>
-        <input type="file" src="" alt="" name="blogImage"><br>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="main">
+        <div id="menu">
+            <div class="logo">
+                <img src="/images/logo.png" alt="Code With Ash" srcset="">
+            </div>
+            <div id="sidebar">
+                <ul>
+                    <li><i class="fa-solid fa-house "></i></i><a href="home" class="active">Dashboard</a></li>
+                    <li><i class="fa-solid fa-message"></i><a href="messagesbyno">Message</a></li>
+                    <li><i class="fa-solid fa-newspaper"></i><a href="blog">Blogs</a></li>
+                    <li><i class="fa-solid fa-user"></i><a href="">About</a></li>
+                    <li><i class="fa-solid fa-gear"></i><a href="">Settings</a></li>
+                    <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Create New Blog</h1>
+            <hr>
+            <div class="form-box">
+                <form action="/insertblog" method="post" enctype="multipart/form-data">
+                    <i class="fa-solid fa-heading"></i>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" placeholder="Title">
+
+                    <br>
+                    <i class="fa-brands` fa-meta"></i>
+                    <label for="title">Meta</label>
+                    <input type="text" name="metadescription" id="metadescription" placeholder="Title">
+
+                    <br>
+
+                    <i class="fa-solid fa-file-lines"></i>
+                    <label for="content">Content</label><br>
+                    <textarea name="content" id cols="30" rows="10" placeholder="Content"></textarea><br>
+
+                    <i class="fa-solid fa-at"></i>
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="" placeholder="Author">
+                    <br>
+                    <i class="fa-solid fa-image"></i>
+                    <label for="file">Image</label>
+                    <input type="file" src="" alt="" name="blogImage">
+                    <div class="center-btn">
+                        <button class="post" type="submit">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="nav">
+
+        </div>
+    </div>
+
 </body>
+
 </html>

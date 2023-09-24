@@ -10,10 +10,11 @@ blogRoute.use(bodyParser.urlencoded({extended: true}))
 blogRoute.set('view engine','ejs')
 blogRoute.set('views','./views/blog')
 
-blogRoute.get('/blogs',blogsController.showBlogs)
+blogRoute.get('/blogs',blogsController.loadBlogs)
 
 
 blogRoute.get('/blogs/:title',blogsController.searchbyTitle)
+blogRoute.get('/blogview',blogsController.getBlogbyId)
 blogRoute.get('/blogview',blogsController.getBlogbyId)
 
 blogRoute.get('/insertblog',(req,res)=>{

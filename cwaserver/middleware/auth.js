@@ -11,7 +11,7 @@ const isUserLogin = async(req,res,next)=>{
 const isUserLogout = async(req,res,next)=>{
     try {
         if(req.session.user_id){
-            return res.redirect('/home')
+            return res.redirect('/admin/home')
         }
         
         next()

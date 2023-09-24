@@ -35,38 +35,37 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>"Hello, I'm Ashutosh, Node.js Developer hailing from the vibrant town of Yamuna Nagar, Haryana. Join me on a journey where code meets creativity, as we explore the boundless possibilities of web development together."</p>
+          <p>"<%= about.intro %>"</p>
         </div>
         <div class="row">
           <div class="col-lg-4">
             <img src="../cwa/img/about.jpeg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Node Js &amp; Android Developer</h3>
+            <h3><%= about.designation%></h3>
             <p class="fst-italic">
               I'm passionate about creating seamless web applications and harnessing the power of technology to solve real-world problems.
             </p>
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Birthday:</strong> 7 March 2001</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Website:</strong> www.codewithash.blog</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Phone:</strong> +91 9182707573</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>City:</strong>   Yamuna Nagar, Haryana</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Birthday:</strong> <%=about.birthday%></li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Website:</strong> <%=about.website%></li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Phone:</strong> <%=about.mobile%></li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>City:</strong> <%=about.city%>  </li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Age:</strong> 22</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Degree:</strong> Master</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Email:</strong> asharma89505@gmail.com</li>
-                  <li><i class="bi bi-rounded-right"></i> <strong>Freelance:</strong> Available</li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Age:</strong> <%=about.age%></li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Degree:</strong><%=about.degree%> </li>
+                  <li><i class="bi bi-rounded-right"></i> <strong>Email:</strong> <%=about.email%></li>
+
                 </ul>
               </div>
             </div>
             <p class="justify-content-center" style="text-align: justify;">
-              As a dedicated Software Developer with a Master's degree in Computer Application, I'm driven by a passion for crafting elegant solutions to complex challenges. My diverse expertise in programming languages and development tools fuels my creativity, enabling me to make impactful contributions to collaborative projects, all within the dynamic realm of technology
-              
+              <%=about.para%>
             </p>
           </div>
         </div>
@@ -118,12 +117,12 @@
           </div> -->
 
           <div class="col-lg-3 col-4 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<%=about.projects%>" data-purecounter-duration="1" class="purecounter"></span>
             <p>Projects</p>
           </div>
 
           <div class="col-lg-3 col-4 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="250" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<%=about.hrs_work%>" data-purecounter-duration="1" class="purecounter"></span>
             <p>Hours Of Work</p>
           </div>
 

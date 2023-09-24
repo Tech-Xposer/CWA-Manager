@@ -5,9 +5,11 @@ const mongoose = require("mongoose")
 const blogRoute = require('./routes/blogRoute')
 const adminRoute = require('./routes/adminRoute')
 const cwaRoute = require('./routes/cwaRoute')
-
+const config = require('./config/config')
 try {
-    mongoose.connect('mongodb://localhost:27017/CWA')
+    // mongoose.connect('mongodb://admin:Dev.ash%4073@codewithash.blog:27017/CWA?authSource=admin')
+    mongoose.connect(`mongodb://${config.dbUsername}:${config.dbPass}@${config.dbHost}:27017/CWA?authSource=admin`)
+
 } catch (error) {
     console.log(error.message);
 }

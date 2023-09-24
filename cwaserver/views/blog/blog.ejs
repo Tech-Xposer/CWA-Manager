@@ -40,32 +40,11 @@
     <div id="main">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="about-fixed">
-                        <div class="my-pic">
-                            <img src="images/my-pic.jpeg" alt="">
-                            <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i
-                                    class="icon-menu menu"></i></a>
-                            <div id="menu" class="collapse">
-                                <ul class="menu-link">
-                                    <li><a href="">About</a></li>
-                                    <li><a href="">Work</a></li>
-                                    <li><a href="">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="my-detail">
-                            <div class="white-spacing">
-                                <h1>Ashutosh</h1>
-                                <span>Node Js Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="col-md-12 page-body">
-                        <div class="row">
+                 
                             <div class="sub-title">
                                 <h1 class="text-center">Code With Ash</h1>
                                 <form  method="POST" action="/blogs">
@@ -87,7 +66,7 @@
                                             </div> 
                                             <%}%>
                                             <div class="post-title">
-                                                <a href="single.html">
+                                                <a href="/blogview?id=<%=blog._id%>">
                                                     <h1><%=blog.title%></h1>
                                                 </a>
                                             </div>
@@ -95,9 +74,9 @@
                                                 <span><%=blog.date.toLocaleDateString()%> by <a href="#" target="_blank"><%=blog.author%></a></span>
                                             </div>
                                             <p>
-                                                <%=blog.content.slice(0,500) + "..." %>
+                                                <%-blog.content.slice(0,500) + "..." %>
                                             </p>
-                                            <a href="http://localhost:3008/blogview?id=<%=blog._id%>"
+                                            <a href="/blogview?id=<%=blog._id%>"
                                                 class="button button-style button-anim fa fa-long-arrow-right"><span>Read
                                                     More</span></a>
                                         </div>     
@@ -112,7 +91,7 @@
                                 <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
                                 <div id="post-end-message"></div>
                             </div>
-                        </div>
+
                         <!-- Subscribe Form Start -->
                         <div class="col-md-8 col-md-offset-2">
                            

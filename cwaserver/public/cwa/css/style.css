@@ -1,6 +1,11 @@
 .input-group-addon {
   cursor: pointer;
 }
+.message p{
+  text-align: center;
+  color: red;
+  margin-top: 50px;
+}
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;

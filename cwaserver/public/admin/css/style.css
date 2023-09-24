@@ -1,0 +1,186 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+#menu{
+    background-color: #1E3050;
+    height: 100vh;
+    width: 15%;
+    float: left;
+    position: fixed;
+}
+hr{
+    border-top: 2px solid #1E3050;
+}
+#menu .logo img{
+    margin-top: 20px;
+    width: 200px;
+}
+#sidebar ul li i{
+    padding: 18px 30px;
+    transition: 1s ease;
+
+}
+
+#sidebar ul li a{
+    color: #fff;
+    cursor: pointer;
+    opacity: .8;
+    text-decoration: none;
+    transition: 1s ease;
+
+    
+}
+#sidebar ul li{
+    transition: 1s ease;
+
+}
+#sidebar ul li:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #1E3050;
+    border-right: 4px solid #1E3050 ;
+    
+}
+
+#sidebar ul li i{
+    color: #fff;
+}
+
+#sidebar ul li:hover i,
+#sidebar ul li:hover a{
+    color: #1E3050;
+    
+}
+
+/* Message */
+#content {
+    position: fixed;
+    top: 10px;
+    left: 15%;
+    bottom: 10%;
+    width: 85%;
+    padding: 2% 3%;
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+.message {
+    position: relative; 
+    border: 1px solid #1E3050; 
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: #ccc 10px 10px ;
+}
+
+.message i {
+    margin-right: 5px;
+    color: #1E3050;
+}
+
+.message p {
+    margin-bottom: 10px;
+    font-size: small;
+}
+
+.msg{
+    text-align: justify;
+}
+.trash-icon {
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer; 
+}
+.trash-icon:hover{
+    color: red;
+}
+
+.nav{
+    position: fixed;
+    left: 15%;
+    bottom: 1%;
+    
+    right: 0;
+}
+.nav a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #1E3050;
+}
+
+.nav-left{
+    margin-left: 2%;
+}
+.nav-right{
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    cursor: pointer; 
+}
+.form-box, .blog-box{
+    border: solid 2px #1E3050;
+    padding: 2%;
+    margin-top: 20px;
+    display: inline-block; 
+    text-align: left;
+}
+#content h1{
+    text-align: center;
+}
+
+.post{
+    background-color: #1E3050;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+.form-box input{
+    margin-top: 10px;
+   width: 40%;
+   height: 40px;
+   padding: 20px 10px;
+    border-radius: 5px;
+    border: solid 1px lightgray;
+   
+}
+
+.form-box i{
+    margin-right: 2px;
+}
+
+.form-box label{
+    margin-right: 20px;
+}
+
+textarea{
+    width: 1032px; 
+    height: 320px; 
+    padding: 20px 10px;
+}
+.center-btn{
+    text-align: center;
+}
+
+#addBlogButton{
+    float: right;
+}
+
+.blog-box pre{
+    text-align: justify;
+    white-space: pre-line;
+}

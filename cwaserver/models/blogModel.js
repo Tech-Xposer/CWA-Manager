@@ -5,8 +5,16 @@ const blogSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    metadescription:{
+        type: String,
+        required:true
+    },
     content:{
         type: String,
+        required:true
+    },
+    permalink:{
+        type:String,
         required:true
     },
     author:{

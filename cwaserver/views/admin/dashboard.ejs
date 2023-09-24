@@ -1,62 +1,42 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Code With Ash - Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="admin/css/style.css">
+  	<title>Code With Ash - Dashboard</title>
+		<link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/7ceed728cf.js"></script>
   </head>
   <body>
-		
-		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
-				<div class="custom-menu">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
-	          <i class="fa fa-bars"></i>
-	          <span class="sr-only">Toggle Menu</span>
-	        </button>
+		<div class="main">
+      <div id="menu">
+        <div class="logo">
+            <img src="/images/logo.png" alt="Code With Ash" srcset="">
         </div>
-	  		<h1><a href="index.html" class="logo">Code With Ash</a></h1>
-        <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="#"><span class="fa fa-home mr-3"></span> Dashboard</a>
-          </li>
-          <li>
-              <a href="#"><span class="fa fa-user mr-3"></span> Users</a>
-          </li>
-          <li>
-            <a href="/blogs"><span class="fa fa-sticky-note mr-3"></span> Blogs</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-sticky-note mr-3"></span> Subcription</a>
-          </li>
-          <li>
-            <a href="/message"><span class="fa fa-paper-plane mr-3"></span> Messages</a>
-          </li>
-          <li>
-            <a href="#"><span class="fa fa-gear mr-3"></span> Settings</a>
-          </li>
-          <li>
-            <a href="/logout"><span class="fa fa-sign-out mr-3" style="align-items: end;"></span>Logout</a>
-          </li>
-        </ul>
-        
-    	</nav>
+        <div id="sidebar">
+          <ul>
+            <li><i class="fa-solid fa-house " ></i></i><a href="home" class="active">Dashboard</a></li>
+            <!-- <li><i class="fa-solid fa-message"></i><a href="messages">Messages</a></li> -->
+            <li><i class="fa-solid fa-message" ></i><a href="messagesbyno">Messages</a></li>
 
-        <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Direct Messages</h2>
+            <li><i class="fa-solid fa-newspaper" ></i><a href="blog">Blogs</a></li>
+            <li><i class="fa-solid fa-user" ></i><a href="">About</a></li>
+            <li><i class="fa-solid fa-gear" ></i><a href="">Settings</a></li>
+            <li><i class="fa-solid fa-right-from-bracket"></i><a href="logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="content">
+        <div class="dp">
+          <img src="/uploads/" alt="Ashutosh Sharma">
+        </div>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. In quasi perspiciatis cumque fugiat eos laborum, possimus impedit recusandae ratione modi pariatur ut nesciunt quae sunt nulla quia quas. Fugit, dolorum.
+        
+        </p>
         
       </div>
-		</div>
-
-    <script src="admin/js/jquery.min.js"></script>
-    <script src="admin/js/popper.js"></script>
-    <script src="admin/js/bootstrap.min.js"></script>
-    <script src="admin/js/main.js"></script>
+      
+    </div>
   </body>
 </html>

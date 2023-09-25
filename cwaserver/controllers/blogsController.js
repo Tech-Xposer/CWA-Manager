@@ -57,6 +57,7 @@ const insertBlog = async (req,res)=>{
   try {
     const blog = new Blogs(req.body)
     blog.permalink = req.body.title.toLowerCase().replaceAll(" ","-")
+    blog.permalink.replaceAll("?","")
     blog.image = req.file.filename
     const data = await blog.save()
     if(data){
@@ -67,5 +68,24 @@ const insertBlog = async (req,res)=>{
   }
 }
 
+const insertBlogLoad = async(req,res)=>{
+  try {
+    res.render('insertblog')
+  } catch (error) {
+    res.status(404).render('404')
+  }
+}
 
-module.exports = { loadBlogs, getBlogbyId ,searchbyTitle,insertBlog,upload };
+const viewBlog = async(req,res)=>{
+  try{    
+      const blogData = await Blogs.findOne(req.params);
+      console.log(req.params);
+      res.render('blogview',{blogData})
+  }catch(err){
+      console.log(err);
+      res.status(404).send('blogs')
+  }
+}
+
+
+module.exports = { loadBlogs, getBlogbyId ,searchbyTitle,insertBlog,upload,viewBlog ,insertBlogLoad};

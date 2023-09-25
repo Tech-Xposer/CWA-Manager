@@ -1,11 +1,12 @@
 const isUserLogin = async(req,res,next)=>{
     try {
         if(!req.session.user_id){
-            return res.redirect('/adminLogin')
+            return res.status(400).redirect('/adminLogin')
         }
         next()
     } catch (error) {
         console.log('Error is User Login Method'+error.message);
+        res.status(400).send('Bad Request')
     }
 }
 const isUserLogout = async(req,res,next)=>{
@@ -16,7 +17,9 @@ const isUserLogout = async(req,res,next)=>{
         
         next()
     } catch (error) {
-        console.console.log('Error is User LogOut Method'+error.message);
+        console.log('Error is User LogOut Method'+error.message);
+        res.status(400).send('Bad Request')
+
     }
 }
 

@@ -27,8 +27,8 @@ adminRoute.get('/admin/blog',auth.isUserLogin,blogsController.loadBlogs)
 
 
 
-adminRoute.get('/register', auth.isUserLogout, adminController.loadRegister)
-adminRoute.post('/register',adminController.getuserDetails)
+adminRoute.get('/register', auth.isUserLogin, adminController.loadRegister)
+adminRoute.post('/register',auth.isUserLogin,adminController.getuserDetails)
 
 adminRoute.get('/adminLogin',auth.isUserLogout,adminController.userLogin)
 adminRoute.post('/adminLogin',adminController.validateLogin)
@@ -38,6 +38,6 @@ adminRoute.get('/admin/deleteMessage/:_id',adminController.deleteMessage)
 adminRoute.get('/admin/logout',auth.isUserLogin,adminController.userLogout)
 
 
-adminRoute.post('admin/search',adminController.searchUser )
+adminRoute.post('admin/search',auth.isUserLogin,adminController.searchUser )
 
 module.exports = adminRoute

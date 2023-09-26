@@ -5,7 +5,7 @@ const { format } = require('date-fns'); // Import the format function from date-
 
 const loadBlogs = async (req, res) => {
   try {
-    const blogData = await Blogs.find({ }).sort('title');
+    const blogData = await Blogs.find({ }).sort( );
     if (blogData) {
       res.render('blog', { blogData });
     }
@@ -33,7 +33,7 @@ const searchbyTitle = async(req,res)=>{
   try{    
       const blogName = req.params.title  
       console.log(blogName);
-      const blogData = await Blogs.find({ title: new RegExp(blogName,'i') }, { _id: 0, is_admin: 0 });
+      const blogData = await Blogs.find({ title: new RegExp(blogName,'i') });
       if(blogData.length!=0){
           res.render('blog',{blogData})
       }else{

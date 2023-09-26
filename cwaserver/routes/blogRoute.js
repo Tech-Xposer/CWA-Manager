@@ -15,11 +15,7 @@ blogRoute.get('/blogs',blogsController.loadBlogs)
 
 blogRoute.get('/blog/:permalink',blogsController.viewBlog)
 blogRoute.get('/blog/search/:title',blogsController.searchbyTitle)
-
-
-blogRoute.get('/insertblog',auth.isUserLogin,blogsController.insertBlogLoad)
-blogRoute.post('/insertblog',auth.isUserLogin,blogsController.upload.single('blogImage'),blogsController.insertBlog)
-
+ 
 
 
 module.exports = blogRoute

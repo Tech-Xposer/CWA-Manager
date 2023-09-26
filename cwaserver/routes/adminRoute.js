@@ -20,7 +20,7 @@ adminRoute.get('/admin/messagesbyno',auth.isUserLogin, adminController.paginatio
 adminRoute.get('/admin/home',auth.isUserLogin,adminController.loadDashboard)
 adminRoute.post('/admin/sendmail',auth.isUserLogin,adminController.sendMail)
 adminRoute.get('/admin/insertblog',auth.isUserLogin,adminController.loadinsertBlog)
-adminRoute.post('/admin/insertblog',auth.isUserLogin,blogsController.insertBlog)
+adminRoute.post('/admin/insertblog',(auth.isUserLogin,blogsController.upload.single('blogImage')),blogsController.insertBlog)
 
 adminRoute.get('/admin/blog',auth.isUserLogin,blogsController.loadBlogs)
 

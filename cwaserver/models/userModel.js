@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     email:{
         type: String,
         required : true,
+        unique: true
     },
     mobile:{
         type: String,
@@ -29,6 +30,6 @@ const userSchema = mongoose.Schema({
         type: Number,
         default:0
     }
-})
+},{timestamps:true})
 
-module.exports = mongoose.model('User',userSchema)
+module.exports = mongoose.model('user',userSchema)

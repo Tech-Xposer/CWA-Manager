@@ -1,6 +1,7 @@
+const { Timestamp } = require('mongodb')
 const mongoose = require('mongoose')
 
-const contactSchema = {
+const contactModel = mongoose.Schema({
     name:{
         type : String,
         required: true       
@@ -14,12 +15,12 @@ const contactSchema = {
         required : true
     },
     message:{
-        type: String,
+        type: String, 
         required : true
     },
     date:{
         type: Date,
         default : Date.now
     }
-}
-module.exports = mongoose.model('contact', contactSchema)
+},{timestamps:true})
+module.exports = mongoose.model('contact', contactModel)

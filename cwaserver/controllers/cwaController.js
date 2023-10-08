@@ -1,8 +1,9 @@
 const Contact = require('../models/contactModel')
-const Skill = require('../models/skillSchema')
-const About = require('../models/aboutSchema')
+const Skill = require('../models/skillModel')
+const About = require('../models/aboutModel')
 
 const loadHome =  async (req,res)=>{
+    
     res.render('home')
 }
 

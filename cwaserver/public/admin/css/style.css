@@ -76,7 +76,9 @@ hr{
     overflow-y: scroll;
 }
 
-.message {
+.message,
+.blog-box{
+    width: 100%;
     position: relative; 
     border: 1px solid #1E3050; 
     border-radius: 5px;
@@ -86,18 +88,22 @@ hr{
     box-shadow: #ccc 10px 10px ;
 }
 
-.message i {
+.message i ,
+.blog-box i{
     margin-right: 5px;
     color: #1E3050;
 }
 
-.message p {
+.message p,
+.blog-box p {
     margin-bottom: 10px;
     font-size: small;
 }
 
-.msg{
+.msg,
+.blog{
     text-align: justify;
+    white-space: pre-wrap;
 }
 .trash-icon {
     position: absolute;

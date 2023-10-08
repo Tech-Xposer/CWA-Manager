@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const aboutSchema = {
+const aboutModel = mongoose.Schema({
     intro:{
         type: String,
         required: true
@@ -52,5 +52,5 @@ const aboutSchema = {
         type:Number,
         required: true
     }
-}
-module.exports = mongoose.model('about',aboutSchema)
+})
+module.exports = mongoose.model('about',aboutModel)

@@ -67,7 +67,13 @@
                                                     <h2><%=blog.title%></h2>
                                                 </a>
                                             </div>
-                                            
+                                            <div class="post-info">
+                                                <span style="float: rig;">
+                                                  <%= blog.date.toLocaleDateString() %> by <a href="/about" target="_blank">
+                                                      <%= blog.author %>
+                                                    </a>
+                                                </span>
+                                              </div>
                                             <p>
                                                 <%-blog.content.slice(0,500) + "..." %>
                                             </p>

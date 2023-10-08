@@ -129,6 +129,7 @@ const userLogin = async(req,res)=>{
 
 const validateLogin = async(req,res)=>{
     try {
+        
         const userData = await User.findOne({email:req.body.email})
         
         if(userData ){
@@ -180,17 +181,11 @@ const userLogout = async(req,res)=>{
 
 const deleteMessage = async (req, res) => {
     try {
-      console.log(req.params._id);
-      const messageId = req.params._id; 
-  
-      const deleteData = await Contact.deleteOne({ _id: messageId });
-  
-      if (deleteData.deletedCount === 1) {
-        res.redirect('/admin/messages')
-      
-      } else {
-        res.status(404).send({ message: 'Message not found' });
-      }
+ 
+      const { _id } = req.params;
+      const deleteData = await Contact.findByIdAndDelete(_id);
+      if(deleteData) res.redirect('/admin/messages')
+      else res.status(404).json('Message Already Deleted or Not Found')
     } catch (error) {
       console.error(error.message);
       res.status(500).send({ message: 'Internal Server Error' });

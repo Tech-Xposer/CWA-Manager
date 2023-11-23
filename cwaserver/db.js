@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+const DB_HOST = process.env.DB_HOST;
+const DB_PASS = process.env.DB_PASS;
+const DB_USERNAME = process.env.DB_USERNAME;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://admin:codewithash%400703@65.1.85.112:27017/CWA?authSource=admin', {
+    await mongoose.connect('mongodb://DB_USERNAME:DB_PASS@DB_HOST:27017/CWA?authSource=admin', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
